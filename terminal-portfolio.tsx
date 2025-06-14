@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from "react";
 
 interface SkillBarProps {
-  name: string
-  percentage: number
-  delay?: number
+  name: string;
+  percentage: number;
+  delay?: number;
 }
 
 const SkillBar: React.FC<SkillBarProps> = ({ name, percentage, delay = 0 }) => {
-  const [width, setWidth] = useState(0)
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setWidth(percentage)
-    }, delay)
+      setWidth(percentage);
+    }, delay);
 
-    return () => clearTimeout(timer)
-  }, [percentage, delay])
+    return () => clearTimeout(timer);
+  }, [percentage, delay]);
 
   return (
     <div className="flex items-center">
@@ -34,30 +34,30 @@ const SkillBar: React.FC<SkillBarProps> = ({ name, percentage, delay = 0 }) => {
         <span>{percentage}%</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 interface CommandOutput {
-  command: string
-  output: React.ReactNode
+  command: string;
+  output: React.ReactNode;
 }
 
 export default function TerminalPortfolio() {
-  const [input, setInput] = useState("")
-  const [history, setHistory] = useState<CommandOutput[]>([])
-  const [commandHistory, setCommandHistory] = useState<string[]>([])
-  const [historyIndex, setHistoryIndex] = useState(-1)
-  const inputRef = useRef<HTMLInputElement>(null)
-  const terminalRef = useRef<HTMLDivElement>(null)
-  const [currentTime, setCurrentTime] = useState(new Date())
+  const [input, setInput] = useState("");
+  const [history, setHistory] = useState<CommandOutput[]>([]);
+  const [commandHistory, setCommandHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const terminalRef = useRef<HTMLDivElement>(null);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentTime(new Date())
-    }, 1000)
+      setCurrentTime(new Date());
+    }, 1000);
 
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearInterval(timer);
+  }, []);
 
   const commands = {
     help: () => (
@@ -149,18 +149,33 @@ export default function TerminalPortfolio() {
     about: () => (
       <div className="space-y-2">
         <div className="text-yellow-400">export NAME="Satvik Shankar"</div>
-        <div className="text-yellow-400">export ROLE="Full Stack Developer & Finance Enthusiast"</div>
-        <div className="text-yellow-400">export LOCATION="New Delhi, IND → Remote Worldwide"</div>
-        <div className="text-yellow-400">export EXPERIENCE="since childhood"</div>
+        <div className="text-yellow-400">
+          export ROLE="Full Stack Developer & Finance Enthusiast"
+        </div>
+        <div className="text-yellow-400">
+          export LOCATION="New Delhi, IND → Remote Worldwide"
+        </div>
+        <div className="text-yellow-400">
+          export EXPERIENCE="since childhood"
+        </div>
         <div></div>
         <div className="text-red-400">A Full Stack Developer who:</div>
-        <div>• Writes code that works on the first try (just kidding, that's impossible)</div>
+        <div>
+          • Writes code that works on the first try (just kidding, that's
+          impossible)
+        </div>
         <div>• Debugs with console.log() like a true artist 🎨</div>
-        <div>• Believes in <span className="text-blue-400">"it works on my machine"</span> philosophy</div>
+        <div>
+          • Believes in{" "}
+          <span className="text-blue-400">"it works on my machine"</span>{" "}
+          philosophy
+        </div>
         <div>• Created my first website at 17 y/o</div>
         <div>• Working on a Micro Finance Startup</div>
         <div></div>
-        <div className="text-red-400">Hobbies and interests outside coding:</div>
+        <div className="text-red-400">
+          Hobbies and interests outside coding:
+        </div>
         <div>~/interests/sports → Badminton, Hiking</div>
         <div>~/interests/music → Guitar, Piano</div>
         <div>~/interests/adventure → Travel, Photography, Sky Diving</div>
@@ -171,7 +186,8 @@ export default function TerminalPortfolio() {
         <div>• Learning Spanish</div>
         <div></div>
         <div className="text-green-400">
-          console.log("Fun fact: I have 99 problems, but a bug ain't one... wait, that's a lie.");
+          console.log("Fun fact: I have 99 problems, but a bug ain't one...
+          wait, that's a lie.");
         </div>
       </div>
     ),
@@ -181,19 +197,25 @@ export default function TerminalPortfolio() {
         <div>My Projects:</div>
         <div></div>
         <div>
-          📱 <span className="text-blue-400">E-Commerce Platform</span> - Full-stack React/Node.js application
+          📱 <span className="text-blue-400">E-Commerce Platform</span> -
+          Full-stack React/Node.js application
         </div>
         <div>
-          🌐 <span className="text-green-400">Portfolio Website</span> - This terminal-style portfolio you're viewing
+          🌐 <span className="text-green-400">Portfolio Website</span> - This
+          terminal-style portfolio you're viewing
         </div>
         <div>
-          🔧 <span className="text-yellow-400">DevOps Automation Tools</span> - CI/CD pipeline optimization scripts
+          🔧 <span className="text-yellow-400">DevOps Automation Tools</span> -
+          CI/CD pipeline optimization scripts
         </div>
         <div>
-          📊 <span className="text-purple-400">Data Visualization Dashboard</span> - Interactive analytics platform
+          📊{" "}
+          <span className="text-purple-400">Data Visualization Dashboard</span>{" "}
+          - Interactive analytics platform
         </div>
         <div>
-          🎮 <span className="text-red-400">Game Development</span> - Various indie game projects
+          🎮 <span className="text-red-400">Game Development</span> - Various
+          indie game projects
         </div>
         <div></div>
         <div>Visit my GitHub to see more projects and contributions!</div>
@@ -248,7 +270,8 @@ export default function TerminalPortfolio() {
           📧 <span className="text-white">Email:</span> jason.myers@email.com
         </div>
         <div>
-          💼 <span className="text-white">LinkedIn:</span> linkedin.com/in/jasonmyers
+          💼 <span className="text-white">LinkedIn:</span>{" "}
+          linkedin.com/in/jasonmyers
         </div>
         <div>
           🐙 <span className="text-white">GitHub:</span> github.com/jasonmyers
@@ -271,21 +294,24 @@ export default function TerminalPortfolio() {
         <div>Work Experience:</div>
         <div></div>
         <div>
-          <span className="text-blue-400">Senior Full Stack Developer</span> | TechCorp Inc. (2022-Present)
+          <span className="text-blue-400">Senior Full Stack Developer</span> |
+          TechCorp Inc. (2022-Present)
         </div>
         <div>• Led development of microservices architecture</div>
         <div>• Mentored junior developers and conducted code reviews</div>
         <div>• Improved application performance by 40%</div>
         <div></div>
         <div>
-          <span className="text-green-400">Full Stack Developer</span> | StartupXYZ (2020-2022)
+          <span className="text-green-400">Full Stack Developer</span> |
+          StartupXYZ (2020-2022)
         </div>
         <div>• Built scalable web applications from scratch</div>
         <div>• Implemented CI/CD pipelines and DevOps practices</div>
         <div>• Collaborated with cross-functional teams</div>
         <div></div>
         <div>
-          <span className="text-yellow-400">Frontend Developer</span> | WebSolutions (2018-2020)
+          <span className="text-yellow-400">Frontend Developer</span> |
+          WebSolutions (2018-2020)
         </div>
         <div>• Developed responsive user interfaces</div>
         <div>• Optimized web performance and accessibility</div>
@@ -297,11 +323,16 @@ export default function TerminalPortfolio() {
         <div>Academic Background:</div>
         <div></div>
         <div>
-          <span className="text-blue-400">Bachelor of Science in Computer Science</span>
+          <span className="text-blue-400">
+            Bachelor of Science in Computer Science
+          </span>
         </div>
         <div>University of Technology | 2014-2018</div>
         <div>• Graduated Magna Cum Laude (GPA: 3.8/4.0)</div>
-        <div>• Relevant Coursework: Data Structures, Algorithms, Software Engineering</div>
+        <div>
+          • Relevant Coursework: Data Structures, Algorithms, Software
+          Engineering
+        </div>
         <div></div>
         <div>
           <span className="text-green-400">Certifications:</span>
@@ -318,37 +349,107 @@ export default function TerminalPortfolio() {
         <div>• Mentor at local coding bootcamps</div>
       </div>
     ),
+    // github: () => (
+    //   <div className="space-y-2">
+    //     <div>
+    //       🐙 <span className="text-green-400">Opening GitHub profile...</span>
+    //     </div>
+    //     <div>
+    //       <span className="text-blue-400 underline">https://github.com/SATVIK-SHANKAR</span>
+    //     </div>
+    //     <div>Check out my repositories and contributions!</div>
+    //   </div>
+    // ),
+    // linkedin: () => (
+    //   <div className="space-y-2">
+    //     <div>
+    //       💼 <span className="text-green-400">Opening LinkedIn profile...</span>
+    //     </div>
+    //     <div>
+    //       <span className="text-blue-400 underline">https://www.linkedin.com/in/satvik-shankar-49b193226/</span>
+    //     </div>
+    //     <div>Let's connect professionally!</div>
+    //   </div>
+    // ),
+    // resume: () => (
+    //   <div className="space-y-2">
+    //     <div>
+    //       📄 <span className="text-blue-400">Downloading resume...</span>
+    //     </div>
+    //     <div>Resume downloaded successfully!</div>
+    //     <div>Thank you for your interest in my background.</div>
+    //   </div>
+    // ),
     github: () => (
       <div className="space-y-2">
         <div>
           🐙 <span className="text-green-400">Opening GitHub profile...</span>
         </div>
         <div>
-          <span className="text-blue-400 underline">https://github.com/jasonmyers</span>
+          <a
+            href="https://github.com/SATVIK-SHANKAR"
+            className="text-blue-400 underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://github.com/SATVIK-SHANKAR
+          </a>
         </div>
         <div>Check out my repositories and contributions!</div>
       </div>
     ),
+
     linkedin: () => (
       <div className="space-y-2">
         <div>
           💼 <span className="text-green-400">Opening LinkedIn profile...</span>
         </div>
         <div>
-          <span className="text-blue-400 underline">https://linkedin.com/in/jasonmyers</span>
+          <a
+            href="https://www.linkedin.com/in/satvik-shankar-49b193226/"
+            className="text-blue-400 underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://www.linkedin.com/in/satvik-shankar-49b193226/
+          </a>
         </div>
         <div>Let's connect professionally!</div>
       </div>
     ),
-    resume: () => (
+    instagram: () => (
       <div className="space-y-2">
         <div>
-          📄 <span className="text-blue-400">Downloading resume...</span>
+          📸 <span className="text-pink-400">Opening Instagram profile...</span>
         </div>
-        <div>Resume downloaded successfully!</div>
-        <div>Thank you for your interest in my background.</div>
+        <div>
+          <a
+            href="https://www.instagram.com/your_username/"
+            className="text-pink-400 underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://www.instagram.com/your_username/
+          </a>
+        </div>
+        <div>Catch glimpses of life outside the code!</div>
       </div>
     ),
+
+    resume: () => {
+      if (typeof window !== "undefined") {
+        window.open("/resume.pdf", "_blank"); // opens in a new tab
+      }
+      return (
+        <div className="space-y-2">
+          <div>
+            📄 <span className="text-blue-400">Opening resume...</span>
+          </div>
+          <div>Thanks for checking out my background!</div>
+        </div>
+      );
+    },
+
     clear: () => null,
     cls: () => null,
     exit: () => (
@@ -361,7 +462,7 @@ export default function TerminalPortfolio() {
         <div>Really? You here for jokes?</div>
       </div>
     ),
-  }
+  };
 
   useEffect(() => {
     // Initial welcome message
@@ -375,63 +476,66 @@ export default function TerminalPortfolio() {
           </div>
         ),
       },
-    ])
-  }, [])
+    ]);
+  }, []);
 
   useEffect(() => {
     if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
-  }, [history])
+  }, [history]);
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus()
+      inputRef.current.focus();
     }
-  }, [])
+  }, []);
 
   const handleCommand = (cmd: string) => {
-    const trimmedCmd = cmd.trim().toLowerCase()
+    const trimmedCmd = cmd.trim().toLowerCase();
 
     if (trimmedCmd === "clear" || trimmedCmd === "cls") {
-      setHistory([])
-      return
+      setHistory([]);
+      return;
     }
 
     const output = commands[trimmedCmd as keyof typeof commands]?.() || (
       <div>Command not found: {cmd}. Type 'help' for available commands.</div>
-    )
+    );
 
-    setHistory((prev) => [...prev, { command: cmd, output }])
-    setCommandHistory((prev) => [...prev, cmd])
-    setHistoryIndex(-1)
-  }
+    setHistory((prev) => [...prev, { command: cmd, output }]);
+    setCommandHistory((prev) => [...prev, cmd]);
+    setHistoryIndex(-1);
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      handleCommand(input)
-      setInput("")
+      handleCommand(input);
+      setInput("");
     } else if (e.key === "ArrowUp") {
-      e.preventDefault()
+      e.preventDefault();
       if (commandHistory.length > 0) {
-        const newIndex = historyIndex === -1 ? commandHistory.length - 1 : Math.max(0, historyIndex - 1)
-        setHistoryIndex(newIndex)
-        setInput(commandHistory[newIndex])
+        const newIndex =
+          historyIndex === -1
+            ? commandHistory.length - 1
+            : Math.max(0, historyIndex - 1);
+        setHistoryIndex(newIndex);
+        setInput(commandHistory[newIndex]);
       }
     } else if (e.key === "ArrowDown") {
-      e.preventDefault()
+      e.preventDefault();
       if (historyIndex !== -1) {
-        const newIndex = historyIndex + 1
+        const newIndex = historyIndex + 1;
         if (newIndex >= commandHistory.length) {
-          setHistoryIndex(-1)
-          setInput("")
+          setHistoryIndex(-1);
+          setInput("");
         } else {
-          setHistoryIndex(newIndex)
-          setInput(commandHistory[newIndex])
+          setHistoryIndex(newIndex);
+          setInput(commandHistory[newIndex]);
         }
       }
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-black text-green-400 font-mono">
@@ -460,7 +564,9 @@ export default function TerminalPortfolio() {
                 <span className="text-white">{item.command}</span>
               </div>
             )}
-            <div className="text-gray-300 whitespace-pre-wrap">{item.output}</div>
+            <div className="text-gray-300 whitespace-pre-wrap">
+              {item.output}
+            </div>
           </div>
         ))}
 
@@ -481,5 +587,5 @@ export default function TerminalPortfolio() {
         </div>
       </div>
     </div>
-  )
+  );
 }
